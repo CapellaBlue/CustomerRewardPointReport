@@ -1,7 +1,7 @@
 # CustomerRewardPointReport
 Script ruby file for customer reward point tracker with specs via Rspec.
 
-Example input:
+## __Example input:__
 ```
 {
       "events": [
@@ -47,12 +47,14 @@ Example input:
       ]
     }
 ```
-Expected output:
-Jessica: 22 points with 11 points per order.\n
-Will: 3 points with 3 points per order.\n
+## __Expected output:__
+
+Jessica: 22 points with 11 points per order.
+Will: 3 points with 3 points per order.
 Elizabeth: No orders.
 
-__Considerations__
+## __Considerations__
+
 Per the challenge guidelines, this input is a response from a service, where I've assummed validations are present for formatting, so the code does not explore 
 all edge cases. My interpretation of the challenge was to only generate a report, and with that objective in mind, I avoided scope creep by not implementing a 
 full application with User/Role/Customer/Order tables, but my inclination was certainly to build it out. Given the dataset provided, user/customer uniqueness would 
@@ -60,14 +62,15 @@ have been an issue with only the first name provided. Retrospectively, the `proc
 would be my first priority. I avoided magic numbers, convered most methods with specs, used explicit naming for code clarity, and modulaized wherever possible to 
 allow ease in future updates.
 
-__Setup__
-Clone the project into a specified local diectory. \n
+## __Setup__
 
-`cd` into the CustomerRewardPointReport directory. \n
+Clone the project into a specified local diectory.
 
-Ensure you have ruby installed with `ruby -v`. \n
+`cd` into the CustomerRewardPointReport directory.
+
+Ensure you have ruby installed with `ruby -v`.
  
-`gem install rspec` (`sudo gem install rspec` if needed). \n
+`gem install rspec` (`sudo gem install rspec` if needed).
 
-Run `ruby simple_reward_point_tracker.rb` to run the specs. \n
+Run `ruby simple_reward_point_tracker.rb` to run the specs.
 
