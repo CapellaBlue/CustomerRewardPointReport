@@ -48,8 +48,8 @@ Example input:
     }
 ```
 Expected output:
-Jessica: 22 points with 11 points per order.
-Will: 3 points with 3 points per order.
+Jessica: 22 points with 11 points per order.\n
+Will: 3 points with 3 points per order.\n
 Elizabeth: No orders.
 
 __Considerations__
@@ -61,13 +61,13 @@ would be my first priority. I avoided magic numbers, convered most methods with 
 allow ease in future updates.
 
 __Setup__
-Clone the project into a specified local diectory. 
+Clone the project into a specified local diectory. \n
 
-`cd` into the CustomerRewardPointReport directory. 
+`cd` into the CustomerRewardPointReport directory. \n
 
-Ensure you have ruby installed with `ruby -v`.
+Ensure you have ruby installed with `ruby -v`. \n
  
-`gem install rspec` (`sudo gem install rspec` if needed). 
+`gem install rspec` (`sudo gem install rspec` if needed). \n
 
-Run `ruby simple_reward_point_tracker.rb` to run the specs. 
+Run `ruby simple_reward_point_tracker.rb` to run the specs. \n
 
