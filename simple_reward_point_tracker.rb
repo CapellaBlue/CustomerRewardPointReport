@@ -40,6 +40,10 @@ class CustomerRewardPointReport
 
         points = calculate_points(event[:amount], determine_rate(event[:timestamp]))
 
+        unless points < LOWER_THRESHOLD || points > UPPER_THRESHOLD
+          report_data[event[:customer]][:points] += points
+          report_data[event[:customer]][:qualifying_order_count] += 1
+        end
       else
         puts "We need to expand! New action: #{event[:action]}"
         next
@@ -49,19 +53,39 @@ class CustomerRewardPointReport
 
   end
 
-  def calculate_points(order_amount, rate)
-
+  def determine_rate(timestamp)
+    hour = Time.parse(timestamp).hour
+    case hour
+    when TIER_1_TIMES
+      return TIER_1_MODIFIER
+    when TIER_2_TIMES
+      return TIER_2_MODIFIER
+    when TIER_3_TIMES
+      return TIER_3_MODIFIER
+    else
+      TIER_4_MODIFIER
+    end
   end
 
-  def determine_rate(timestamp)
-
+  def calculate_points(order_amount, rate)
+    return 0.00 if order_amount < 0.01
+    (order_amount/rate).ceil
   end
 
   def generate_report(data)
-
+    report = []
+    data.each do |k, v|
+      if v[:qualifying_order_count] == 0
+        report << "#{k}: No orders."
+      else
+        report << "#{k}: #{v[:points]} points with #{avg_points_per_order(v)} points per order."
+      end
+    end
+    report.join("\n")
   end
 
   def avg_points_per_order(customer_data)
+    customer_data[:points]/customer_data[:qualifying_order_count]
   end
 end
 
